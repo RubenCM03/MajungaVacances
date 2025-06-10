@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: https://mahajanga-maison-vacances.com/sitemap.xml

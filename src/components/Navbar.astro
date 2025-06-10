@@ -1,0 +1,46 @@
+<nav class="bg-white p-2 ps-9 shadow-md" x-data="{ open: false }">
+    <div class="flex flex-wrap mx-auto p-2 ps-8 pe-8 justify-between items-center">
+        <a href="/" class="flex items-center space-x-3 text-black text-2xl font-semibold">
+            Majunga Mahajanga Vacances
+        </a>
+        <button
+            @click="open = !open"
+            class="md:hidden flex items-center px-3 py-2 border rounded text-black border-gray-400"
+            aria-label="Abrir menú">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+        <div 
+            class="w-full md:block md:w-auto"
+            :class="{ 'block': open, 'hidden': !open }">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+                <li>
+                    <a href="/mg/" class="text-black block py-2 px-3 group transition-all duration-300 ease-in-out">
+                        <div class="p-1 flex items-center space-x-2 bg-left-bottom bg-gradient-to-r from-blue-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500">
+                            <img src="/flags/Madagascar-flag.png" alt="Madagascar Flag Icon" class="w-5 h-5 shadow-xl">
+                            <p>Malagasy</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/fr/" class="text-black block py-2 px-3 group transition-all duration-300 ease-in-out">
+                        <div class="p-1 flex items-center space-x-2 bg-left-bottom bg-gradient-to-r from-blue-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500">
+                            <img src="/flags/France-flag.png" alt="France Flag Icon" class="w-5 h-5">
+                            <p>Français</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/de/" class="text-black block py-2 px-3 group transition-all duration-300 ease-in-out">
+                        <div class="p-1 flex items-center space-x-2 bg-left-bottom bg-gradient-to-r from-blue-500 to-blue-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500">
+                            <img src="/flags/Germany_Flag.png" alt="Germany Flag Icon" class="w-5 h-5">
+                            <p>Deutsch</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>

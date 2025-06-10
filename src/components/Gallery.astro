@@ -1,0 +1,112 @@
+---
+import { getLanguageFromUrl, useTranslation } from "../languages/utils.js";
+
+const lang = getLanguageFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const images = [
+  { src: "/house/house_outside.jpg", desc: "Maison à Majunga" },
+  { src: "/house/house_inside_1.jpg", desc: "Salon lumineux" },
+  { src: "/house/house_inside_2.jpg", desc: "Salle à manger" },
+  { src: "/house/house_salonTv.jpeg", desc: "Salon principal" },
+  { src: "/house/house_room_1bed.jpg", desc: "Chambre double" },
+  { src: "/house/house_room_2beds.jpg", desc: "Chambre deux lits" },
+  { src: "/house/house_room_bunkBed.jpg", desc: "Chambre lits superposés" },
+  { src: "/house/house_kitchen.jpg", desc: "Cuisine équipée" },
+  { src: "/house/house_bathroom_1.jpg", desc: "Salle de bain principale" },
+  { src: "/house/house_bathroom_2.jpg", desc: "Deuxième salle de bain" },
+  { src: "/house/house_shower.jpg", desc: "Douche moderne" },
+  { src: "/house/house_terasse.jpg", desc: "Terrasse extérieure" },
+  { src: "/house/house_terasse_2.jpeg", desc: "Vue terrasse et jardin" },
+];
+---
+
+<section class="w-full">
+  <!-- Carrusel -->
+  <div id="image-carousel" class="relative w-full h-screen">
+    <!-- Carousel wrapper -->
+    <div class="relative w-full h-full overflow-hidden">
+      {
+        images.map((image, index) => (
+          <div
+            class={`carousel-item absolute inset-0 transition-opacity duration-700 ease-in-out ${
+              index === 0 ? "opacity-100 z-20" : "opacity-0 z-10"
+            }`}
+            data-index={index}
+          >
+            <img
+              src={image.src}
+              alt={image.desc}
+              class="w-full h-full object-contain "
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Controles -->
+    <button
+      type="button"
+      class="absolute top-1/2 left-4 -translate-y-1/2 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none"
+      id="prev-slide"
+    >
+      <span
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/30 hover:bg-white/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none"
+      >
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 6 10">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 1 1 5l4 4"></path>
+        </svg>
+      </span>
+    </button>
+
+    <button
+      type="button"
+      class="absolute top-1/2 right-4 -translate-y-1/2 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none"
+      id="next-slide"
+    >
+      <span
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/30 hover:bg-white/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none"
+      >
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 6 10">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 9 4-4-4-4"></path>
+        </svg>
+      </span>
+    </button>
+  </div>
+</section>
+
+<script is:client>
+  const items = document.querySelectorAll(".carousel-item");
+  const nextBtn = document.getElementById("next-slide");
+  const prevBtn = document.getElementById("prev-slide");
+  let current = 0;
+
+  function showSlide(index) {
+    items.forEach((item, i) => {
+      item.classList.toggle("opacity-100", i === index);
+      item.classList.toggle("z-20", i === index);
+      item.classList.toggle("opacity-0", i !== index);
+      item.classList.toggle("z-10", i !== index);
+    });
+  }
+
+  nextBtn.addEventListener("click", () => {
+    current = (current + 1) % items.length;
+    showSlide(current);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    current = (current - 1 + items.length) % items.length;
+    showSlide(current);
+  });
+</script>

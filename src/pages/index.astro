@@ -1,0 +1,59 @@
+---
+import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
+import Gallery from "../components/Gallery.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<!doctype html>
+<html lang="mg" itemscope itemtype="https://schema.org/WebPage">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Majunga Mahajanga Vacances | Maison de vacances à Madagascar</title>
+    <meta name="description" content="Maison de vacances à Majunga Mahajanga, Madagascar. Location saisonnière idéale pour familles et groupes." />
+		<meta name="keywords" content="maison de vacances, Majunga, Mahajanga, Madagascar, Madagaskar, location saisonnière, famille, groupe" />
+    <meta property="og:title" content="Majunga Mahajanga Vacances" />
+    <meta property="og:description" content="Maison de vacances à Majunga Mahajanga, Madagascar. Location saisonnière idéale pour familles et groupes." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="mg" />
+    <meta property="og:url" content="https://majunga-maison-vacances.com/" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="robots" href="/robots.txt" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+  </head>
+  <body>
+    <Navbar />
+
+    <main id="main-content" role="main" aria-label="Contenu principal">
+      <section 
+        class="bg-gradient-to-t from-blue-800 to-blue-400 py-8 text-white text-center shadow-2xl"
+        aria-label="Présentation"
+        itemscope itemtype="https://schema.org/LodgingBusiness"
+      >
+        <meta itemprop="name" content="Maison de Vacances Majunga" />
+        <meta itemprop="address" content="Majunga, Madagascar" />
+        <meta itemprop="telephone" content="+261 341 551 268" />
+        <header>
+          <h1 class="font-semibold text-3xl mb-8" itemprop="name">
+            Majunga Mahajanga Vacances
+          </h1>
+        </header>
+        <article class="max-w-6xl mx-auto" itemprop="description">
+          <p class="mb-4 font-semibold">
+            Tel: <span itemprop="telephone">0341 551 268</span>
+          </p>
+          <div aria-label="Galerie d'images" itemscope itemtype="https://schema.org/ImageGallery">
+            <Gallery />
+          </div>
+        </article>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
